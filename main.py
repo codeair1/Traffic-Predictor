@@ -3,9 +3,8 @@ from pydantic import BaseModel
 import joblib
 import uvicorn
 import pandas as pd
-from predict_traffic import TrafficPred 
+from predict_traffic import TrafficPred
 from fastapi.middleware.cors import CORSMiddleware
-
 
 # Define the input data schema
 class TrafficInput(BaseModel):
@@ -14,7 +13,6 @@ class TrafficInput(BaseModel):
 
 # Create the FastAPI app
 app = FastAPI()
-
 
 app.add_middleware(
     CORSMiddleware,
