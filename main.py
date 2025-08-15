@@ -14,13 +14,20 @@ class TrafficInput(BaseModel):
 # Create the FastAPI app
 app = FastAPI()
 
+from fastapi.middleware.cors import CORSMiddleware
+
+origins = [
+    "https://traffic-predictor-vep6-k98cfs09y-codeairs-projects.vercel.app"
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Or specify your frontend's URL
+    allow_origins=origins,       # only your site allowed
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 # Prediction endpoint
 @app.post("/predict")
