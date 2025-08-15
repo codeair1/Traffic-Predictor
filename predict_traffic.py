@@ -23,12 +23,12 @@ def TrafficPred(lag1,lag2):
 
     model = download_model()
 
-        current_datetime = datetime.now()
+    current_datetime = datetime.now()
 
-        hour = current_datetime.hour + 1
+    hour = current_datetime.hour + 1
 
 
-        weekday_map = {
+    weekday_map = {
             'Monday': 0,
             'Tuesday': 1,
             'Wednesday': 2,
@@ -37,10 +37,10 @@ def TrafficPred(lag1,lag2):
             'Saturday': 5,
             'Sunday': 6
         }
-        day_of_week1 = current_datetime.strftime("%A")
-        day_of_week = weekday_map[day_of_week1]
+    day_of_week1 = current_datetime.strftime("%A")
+    day_of_week = weekday_map[day_of_week1]
 
-        data = pd.DataFrame([{
+    data = pd.DataFrame([{
             'hour': hour,
             'day_of_week': day_of_week,
             'lag1': lag1,
@@ -48,7 +48,7 @@ def TrafficPred(lag1,lag2):
         }])
 
 
-        prediction = model.predict(data)
-        return prediction[0]
+    prediction = model.predict(data)
+    return prediction[0]
 
 
